@@ -52,12 +52,22 @@ def _init():
             start_stages(arg, format)
             compile(arg)
             return
+        compile_zig_arg = "compile_zig="
+        if arg.startswith(compile_zig_arg):
+            format = True
+            # start_stages(arg, format)
+            compile_zig(arg)
+            return
         setup_arg = "setup="
         if arg.startswith(setup_arg):
             setup(arg)
             return
     help()
     return
+
+
+def compile_zig(arg):
+    print("")
 
 
 def compile(arg):
