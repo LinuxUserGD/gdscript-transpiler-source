@@ -8,6 +8,7 @@ import random
 import os
 import sys
 
+
 # See https://github.com/godotengine/godot/issues/41066.
 def f(
     p,

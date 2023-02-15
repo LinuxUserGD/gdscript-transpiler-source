@@ -8,6 +8,7 @@ import random
 import os
 import sys
 
+
 # https://github.com/godotengine/godot/pull/61666
 def test():
     dict = {"key": "value"}

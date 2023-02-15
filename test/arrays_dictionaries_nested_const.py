@@ -8,6 +8,7 @@ import random
 import os
 import sys
 
+
 # https://github.com/godotengine/godot/issues/50285
 def test():
     _CONST_INNER_DICTIONARY = {"key": True}

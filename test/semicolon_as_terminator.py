@@ -8,6 +8,7 @@ import random
 import os
 import sys
 
+
 # GDTEST_OK
 def test():
     a()
