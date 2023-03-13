@@ -16,36 +16,52 @@ def transpile(content):
         if not line.startswith("##"):
             t += analyze(line)
     if props.sys_imp:
+        props.sys_imp = False
         t = "import sys" + "\n" + t
     if props.os_imp:
+        props.os_imp = False
         t = "import os" + "\n" + t
     if props.rand_imp:
+        props.rand_imp = False
         t = "import random" + "\n" + t
     if props.math_imp:
+        props.math_imp = False
         t = "import math" + "\n" + t
     if props.nuitka_imp:
+        props.nuitka_imp = False
         t = "from nuitka import Version" + "\n" + t
     if props.black_imp:
+        props.black_imp = False
         t = "import black" + "\n" + t
     if props.zig_imp:
+        props.zig_imp = False
         t = "import ziglang.__main__" + "\n" + t
     if props.datetime_imp:
+        props.datetime_imp = False
         t = "import datetime" + "\n" + t
     if props.xpython_imp:
-        t = "import xpython.__main__" + "\n" + t
+        props.xpython_imp = False
+        t = "    print('Cannot import xpython')" + "\n" + t
+        t = "except ImportError:" + "\n" + t
+        t = "    import xpython.__main__" + "\n" + t
+        t = "try:" + "\n" + t
     if props.py_imp:
+        props.py_imp = False
         t = "#!/usr/bin/env python" + "\n" + t
     if props.left_def:
+        props.left_def = False
         t += "def left(s, amount):"
         t += "\n"
         t += "    return s[:amount]"
         t += "\n"
     if props.right_def:
+        props.right_def = False
         t += "def right(s, amount):"
         t += "\n"
         t += "    return s[len(s)-amount:]"
         t += "\n"
     if props.resize_def:
+        props.resize_def = False
         t += "def resize(arr, size):"
         t += "\n"
         t += "    i"
@@ -61,6 +77,7 @@ def transpile(content):
         t += "    return arr"
         t += "\n"
     if props.init_def:
+        props.init_def = False
         t += "i"
         t += "f"
         t += " __name__=="
