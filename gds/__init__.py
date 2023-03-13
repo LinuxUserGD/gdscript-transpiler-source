@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-import xpython.__main__
 import datetime
 import black
 from nuitka import Version
