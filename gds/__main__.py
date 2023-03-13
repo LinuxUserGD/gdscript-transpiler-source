@@ -1,9 +1,9 @@
-#!/usr/bin/env python
-import datetime
+try:
+    import xpython.__main__
+except ImportError:
+    print("Cannot import xpython")
 import black
 from nuitka import Version
-import math
-import random
 import os
 import sys
 
@@ -101,7 +101,7 @@ def compile(arg):
     nuitka += "--assume-yes-for-downloads"
     nuitka += "';"
     nuitka += "e='"
-    # bugfix "No such file or directory: Grammar3.10.9.final.0.pickle"
+    # bugfix "No such file or directory: Grammar3.10.10.final.0.pickle"
     nuitka += "--include-package-data=blib2to3"
     nuitka += "';"
     nuitka += "f='"
@@ -703,17 +703,6 @@ def run_vector2():
 
 def left(s, amount):
     return s[:amount]
-
-
-def right(s, amount):
-    return s[len(s) - amount :]
-
-
-def resize(arr, size):
-    if len(arr) == 0:
-        arr.append(None)
-    arr *= size
-    return arr
 
 
 if __name__ == "__main__":

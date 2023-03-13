@@ -1,7 +1,7 @@
 # GDScript to Python to C Transpiler
 
 [![Template](https://github.com/LinuxUserGD/gdscript-transpiler-bin/actions/workflows/template.yml/badge.svg?branch=dev)](https://github.com/LinuxUserGD/gdscript-transpiler-bin/actions/workflows/template.yml)
-[![Godot 4.0.alpha](Godot-v4.0.svg)](https://downloads.tuxfamily.org/godotengine/4.0/)
+[![Godot 4.1.dev](Godot-v4.1.svg)](https://downloads.tuxfamily.org/godotengine/4.0/)
 [![MIT license](blue.svg)](LICENSE)
 [![Python](python.svg)](https://www.python.org/)
 
@@ -12,7 +12,7 @@
 
 Minimal Scripts can be transpiled to Python.
 
-Binary builds are compiled using [GitHub Actions](https://github.com/LinuxUserGD/GDScript2PythonTranspiler/actions) and available at [itch.io](https://linuxusergd.itch.io/gdscript-transpiler-bin).
+Binary builds are compiled using [GitHub Actions](https://github.com/LinuxUserGD/GDScript2PythonTranspiler/actions) for Alpine Linux, macOS and Windows x86_64.
 
 Also see [generated Python source from GDScript](https://github.com/LinuxUserGD/gdscript-transpiler-source).
 
@@ -22,9 +22,7 @@ Also see [generated Python source from GDScript](https://github.com/LinuxUserGD/
 ## Example
 
 ```
-git clone https://codeberg.org/LinuxUserGD/gdscript-transpiler-bin.git
-
-cd gdscript-transpiler-bin
+git clone --recursive https://codeberg.org/LinuxUserGD/gdscript-transpiler-bin.git && cd gdscript-transpiler-bin
 ```
 
 ### Godot Engine 4 command line (stage0)
@@ -38,8 +36,10 @@ cd gdscript-transpiler-bin
 - `./godot4 -s bin/gds.gd --quit --headless compile=bin/gds.gd` (for compiling GDScript to binary using Clang/Nuitka)
 
 ### Python environment (stage1)
-
-- `python -m pip install git+https://github.com/LinuxUserGD/gdscript-transpiler-source.git` (for installing Python project)
+Installing python gds
+```
+python -m pip install git+https://github.com/LinuxUserGD/gdscript-transpiler-source.git
+```
 
 - `python -m gds help`
 
@@ -50,6 +50,10 @@ cd gdscript-transpiler-bin
 - `python -m gds compile=bin/gds.gd`
 
 ### Nuitka compiled binary (stage2)
+Installing gds binary (available at [itch.io](https://linuxusergd.itch.io/gdscript-transpiler-bin))
+```
+chmod +x gds
+```
 
 - `./gds[.exe] help`
 
@@ -65,13 +69,13 @@ Time for running GDScript code:
 
 ```gdscript
 func string() -> int:
-	var x : String = ""
+	var x: String = ""
 	for i in range(0, 300000):
 		x += " "
 	return x.length()
 
 func add() -> int:
-	var x := -100000000
+	var x: int = -100000000
 	for i in range(0, 100000000):
 		x += 1
 	return x
